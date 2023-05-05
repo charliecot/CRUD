@@ -1,0 +1,39 @@
+{% extends 'Base.html'%}
+
+{% block content %}
+
+
+
+
+
+<div class="container">
+    <nav class="navbar navbar-light bg-light navbar-expand-lg justify-content-between">
+        <div class="navbar-brand  lead "><a href="{% url 'see-post' %}" class="display-4 text-secondary" style="text-decoration:none ;">See-Post</a></div>
+        <H2 class="text-primary">CRUDS|APPLICATION </H2>
+        
+    </nav>
+</div>
+<p class="display-4 text-secondary text-center">update students post</p>
+<hr style="width:30% ; height:20px ;margin:auto;">
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto mt-5">
+            <header class="text-center lead text-uppercase text-white bg-primary py-3 display-3 ">update post..</header>
+            <form class="mt-2" method="post">{% csrf_token %}
+                <div class="form-group">
+                {{HTMLFORM.as_p}}
+                </div>
+                <button type="submit" class="btn btn-primary text-uppercase " value="update" style="width:100%">update</button>
+            
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

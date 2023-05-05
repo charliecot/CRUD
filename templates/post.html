@@ -1,0 +1,48 @@
+{% extends 'Base.html' %}
+
+{% block content%}
+<div class="container">
+    <nav class="navbar navbar-light bg-light navbar-expand-lg justify-content-between">
+        <div class="navbar-brand  lead "><a href="{% url 'main-page' %}" class="display-4 text-secondary text-capitalize" style="text-decoration:none ;">add-post</a></div>
+        <H2 class="text-primary">CRUDS|APPLICATION </H2>
+    </nav>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-8 mx-auto table-responsive">
+            <p class="display-4 text-secondary text-center">view students post</p>
+            <hr style="width:50% ; height:20px ;margin:auto;">
+            <table class=" table table-bordered table-hover table-stiped table-info">
+            <tr class="text-center" >
+                <th>Name</th>
+                <th>Gender</th>
+                <th>MAT No</th>
+                <th>Level</th>
+                <th>Edit</th>
+
+            </tr>
+            
+                {% for object in objects %}
+                <tr>
+                       <td> {{object.name}}</td>
+                       <td> {{object.gender}}</td>
+                       <td> {{object.matricule}}</td>
+                       <td> {{object.level}}</td>
+                       <td class="d-flex justify-content-evenly">
+                        <form action="{% url 'delete' object.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn  btn-danger" value="delete
+                            ">Delete</button>
+                        </form>
+                        <a href="{% url 'update-post' object.id %}" type="button" class="btn  btn-secondary">Update</a>
+                       </td>
+                </tr>     
+                {% endfor %}
+                
+            
+         </table>
+         
+       </div>
+    </div>
+</div>
+{% endblock%}
